@@ -1,0 +1,137 @@
+Name
+    File::MailAlias - Domain model for the system mail aliases file
+
+Version
+    0.16.$Revision: 4 $
+
+Synopsis
+       use File::MailAlias;
+
+       my $alias_obj = File::MailAlias->new( $alias_attributes );
+
+Description
+    Domain model for the system mail aliases file. Extends
+    File::DataClass::Schema
+
+Configuration and Environment
+    Defines these attributes:
+
+    "system_aliases"
+       The real mail alias file. Defaults to /etc/mail/aliases
+
+    "commit"
+       Boolean indicating whether source code control tracking is being
+       used. Defaults to "false"
+
+    "path"
+       Path to the copy of the "aliases" file that this module works on.
+       Defaults to "aliases" in the "ctrldir"
+
+    "prog"
+       Path to the "appname"_misc program which is optionally used to commit
+       changes to the local copy of the aliases file to a source code
+       control repository
+
+    "new_aliases"
+       Path to the "newaliases" program that is used to update the MTA when
+       changes are made
+
+    "suid"
+       Path to the "suid" root wrapper program that is called to enable
+       update access to the real mail alias file
+
+Subroutines/Methods
+  aliases_map
+       $alias_obj->aliases_map;
+
+    Returns a hash ref of aliases. Caches the result and updates
+    automatically by reading the cache mod time
+
+  create
+       $alias_obj->create( { name => $name, fields => $fields } );
+
+    Create a new mail alias. Passes the fields to the "suid" root wrapper on
+    the command line. The wrapper calls the "update_as_root" method to get
+    the job done. Adds the text from the wrapper call to the results section
+    on the stash
+
+  delete
+       $alias_obj->delete( { name => $name } );
+
+    Deletes the named mail alias. Calls "update_as_root" via the "suid"
+    wrapper. Adds the text from the wrapper call to the results section on
+    the stash
+
+  email_address
+       $email_address = $alias_obj->email_address( $username );
+
+    Takes a user returns a guess as to what the users email address might be
+
+  find
+       $f_dc_element_obj = $alias_obj->list( $name );
+
+    Initialises these attributes in the returned object
+
+    aliases
+       List of alias names
+
+    comment
+       Creation comment associated with the selected alias
+
+    created
+       Date the selected alias was created
+
+    owner
+       Who created the selected alias
+
+    recipients
+       List of recipients for the selected owner
+
+  list
+       $f_dc_list_obj = $alias_obj->list( $name );
+
+    Returns an object containing a list of alias names and the fields
+    pertaining to the requested alias if it exists
+
+  update
+       $alias_obj->update( { name => $name, fields => $fields } );
+
+    Update an existing mail alias. Calls "update_as_root" via the "suid"
+    wrapper
+
+  update_as_root
+       $alias_obj->update_as_root( $alias, $recipients, $owner, $comment );
+
+    Called from the "suid" root wrapper this method updates the local copy
+    of the alias file as required and then copies the changed file to the
+    real system alias file. It will also run the "newaliases" program and
+    commit the changes to a source code control system if one is being used
+
+Diagnostics
+    None
+
+Dependencies
+    File::DataClass
+    IPC::Cmd
+    Moose
+
+Incompatibilities
+    There are no known incompatibilities in this module
+
+Bugs and Limitations
+    There are no known bugs in this module. Please report problems to the
+    address below. Patches are welcome
+
+Author
+    Peter Flanigan, "<pjfl@cpan.org>"
+
+License and Copyright
+    Copyright (c) 2013 Peter Flanigan. All rights reserved
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself. See perlartistic
+
+    This program is distributed in the hope that it will be useful, but
+    WITHOUT WARRANTY; without even the implied warranty of MERCHANTABILITY
+    or FITNESS FOR A PARTICULAR PURPOSE
+

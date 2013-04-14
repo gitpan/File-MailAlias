@@ -1,0 +1,49 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.66.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 6e9376031c5f4e83d7033d0f31472e6827728ddf Build.PL
+SHA1 713f366f3659187748887d8b4a66f067975ad133 Changes
+SHA1 2b3ccb88f716f614f8af721a1c69dba0bcdbbb32 LICENSE
+SHA1 8eee1a1e86f88b324e9bd77f38eee63948dc1d18 MANIFEST
+SHA1 b5088b386eb9c5dd1fa67e1db567bdbbddf49c16 META.json
+SHA1 7f8bb424c6618c8c7eae4ec77fea25e169b2f73d META.yml
+SHA1 6aee84dcbb46ef359026cb52a92e151edd34ed2f README
+SHA1 4efd622830066cf222e8f2542024a7fed26666a2 inc/Bob.pm
+SHA1 b2daf2d6d3f2158b33d84a79ea725c922f508718 inc/CPANTesting.pm
+SHA1 32d0d60cba78d86b9c2cc6ce3b511c0fbe6e0b91 inc/SubClass.pm
+SHA1 dace07c9f84bcae2b7dd31daaca61595f5a7a37f lib/File/MailAlias.pm
+SHA1 c7615972f6eac2503a04a6ab6acfbc01539f6554 lib/File/MailAlias/Storage.pm
+SHA1 5b418179c13d5f6c7995c9021ec067a20cab70dc t/01always_pass.t
+SHA1 c2a88ab40c9c38cd8d0cba598a1a75af7465c490 t/02pod.t
+SHA1 d7477d8a429615ca51cfdfc21dfb9e5e6b3aac70 t/03podcoverage.t
+SHA1 6c49c5b022fe4d20fa3931084848e4155a76303d t/04critic.t
+SHA1 53a85a71ca5e6d2be2e9e4f1eb3ddd5e4b19ba54 t/05kwalitee.t
+SHA1 b5fc0653fdf5fa2dfd820c12f33372f9a0b6bdbe t/06yaml.t
+SHA1 004133a280cdcf34596f8ef2da6e9faf77d8d9b9 t/07podspelling.t
+SHA1 8696251599bbb8dda86cc4c4fca9dd24675743bd t/10test_script.t
+SHA1 c02217be0e4ca4d042c2a243629f43fed122a62e t/aliases
+SHA1 00aa2e48a788f7ec7de8365693f0ba278f86c98c t/critic.rc
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.10 (GNU/Linux)
+
+iQEcBAEBAgAGBQJRatBOAAoJEK492j4Im1BpETUIALm0XdEFdW5jc9C/ks9CSsD7
+aZzejaX1SVIufJ8znRirIwMlyXKWcCqTHL2qk5imJgZV/yLTviC/MI6Hkm2MQcb6
+70f001xvvTaInOvmHK2WzQuuMT9EwUho8HHAhAq705UI+d7GnndlSSRjKLT1Y9GQ
+x+3F/spa39M5q4R3EPFBr9PkJV0tUfNKMIKldfNW6sUq8uqUsbqvQxDbc4A3D9bT
+9eMRijwC4jIuIzyBLMegY124NAbhlaj2ia/W+9zgjHJ0EuN0EBZOyM8cTlPpJ3T6
+74XFKNw8DqlR9AC+QcIqRc7wuUupudu4+6sYAzZunkvR4l7zKCIgKcOeoiiPBKA=
+=Cgi9
+-----END PGP SIGNATURE-----
