@@ -1,10 +1,14 @@
 Revision history for File::MailAlias
 
+0.17.3    2013-07-28 19:04:34
+          - Bumped File::DataClass dependency
+          - Mooified
+
 0.16.4    2013-04-14 16:50:13
-          Updated POD
-          Updated author email
-          Extracted code and tests from File::DataClass
+          - Updated POD
+          - Updated author email
+          - Extracted code and tests from File::DataClass
 
 0.1.1     2013-04-11 16:00:10
-          Created initial project files
+          - Created initial project files
 

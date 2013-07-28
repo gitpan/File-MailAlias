@@ -1,20 +1,22 @@
-# @(#)$Ident: MailAlias.pm 2013-04-14 15:48 pjf ;
+# @(#)$Ident: MailAlias.pm 2013-07-28 18:04 pjf ;
 
 package File::MailAlias;
 
-use namespace::autoclean;
-use version; our $VERSION = qv( sprintf '0.16.%d', q$Rev: 4 $ =~ /\d+/gmx );
+use 5.01;
+use namespace::sweep;
+use version; our $VERSION = qv( sprintf '0.17.%d', q$Rev: 3 $ =~ /\d+/gmx );
 
-use English                    qw(-no_match_vars);
+use English                    qw( -no_match_vars );
 use File::DataClass::Constants;
-use File::DataClass::Functions qw(throw);
-use File::DataClass::IO          ();
+use File::DataClass::Functions qw( throw );
+use File::DataClass::IO          ( );
+use File::DataClass::Types     qw( ArrayRef Bool Maybe Str );
 use File::Copy;
-use File::Spec::Functions      qw(catfile);
-use IPC::Cmd                   qw(can_run run);
-use Moose;
+use File::Spec::Functions      qw( catfile );
+use IPC::Cmd                   qw( can_run run );
+use Moo;
 
-extends qw(File::DataClass::Schema);
+extends q(File::DataClass::Schema);
 
 has '+result_source_attributes' =>
    default              => sub { {
@@ -25,27 +27,26 @@ has '+result_source_attributes' =>
 has '+storage_class'    => default => q(+File::MailAlias::Storage);
 
 
-has 'commit'            => is => 'rw', isa => 'Bool', default => FALSE;
+has 'commit'            => is => 'rw', isa => Bool, default => FALSE;
 
-has 'commit_cmd'        => is => 'ro', isa => 'ArrayRef',
+has 'commit_cmd'        => is => 'ro', isa => ArrayRef,
    default              => sub { [ qw(svn ci -m "Updated") ] };
 
-has 'mail_domain'       => is => 'ro', isa => 'Str',
-   builder              => '_build_mail_domain', lazy => TRUE;
+has 'mail_domain'       => is => 'lazy', isa => Str;
 
-has 'newaliases'        => is => 'ro', isa => 'ArrayRef',
+has 'newaliases'        => is => 'ro', isa => ArrayRef,
    default              => sub { [ q(newaliases) ] };
 
-has 'root_update'       => is => 'rw', isa => 'Bool', default => FALSE;
+has 'root_update'       => is => 'rw', isa => Bool, default => FALSE;
 
-has 'root_update_attrs' => is => 'ro', isa => 'ArrayRef',
+has 'root_update_attrs' => is => 'ro', isa => ArrayRef,
    default              => sub { [ qw(-qnc update_mail_aliases) ] };
 
-has 'root_update_cmd'   => is => 'ro', isa => 'Maybe[Str]';
+has 'root_update_cmd'   => is => 'ro', isa => Maybe[Str];
 
-has 'source_name'       => is => 'ro', isa => 'Str', default => q(aliases);
+has 'source_name'       => is => 'ro', isa => Str, default => q(aliases);
 
-has 'system_aliases'    => is => 'ro', isa => 'ArrayRef',
+has 'system_aliases'    => is => 'ro', isa => ArrayRef,
    default              => sub { [ NUL, qw(etc mail aliases) ] };
 
 around 'BUILDARGS' => sub {
@@ -137,7 +138,6 @@ sub update_as_root {
 }
 
 # Private methods
-
 sub _build_mail_domain {
    my $io = File::DataClass::IO->new( [ NUL, qw(etc mailname) ] );
 
@@ -187,7 +187,7 @@ File::MailAlias - Domain model for the system mail aliases file
 
 =head1 Version
 
-0.16.$Revision: 4 $
+0.16.$Rev: 3 $
 
 =head1 Synopsis
 
@@ -206,14 +206,14 @@ Defines these attributes:
 
 =over 3
 
-=item C<system_aliases>
-
-The real mail alias file. Defaults to F</etc/mail/aliases>
-
 =item C<commit>
 
 Boolean indicating whether source code control tracking is being
 used. Defaults to C<false>
+
+=item C<commit_cmd>
+
+=item C<newaliases>
 
 =item C<path>
 
@@ -228,13 +228,35 @@ code control repository
 
 =item C<new_aliases>
 
-Path to the C<newaliases> program that is used to update the MTA
-when changes are made
+Path to the C<newaliases> program that is used to update the mail transfer
+agent when changes are made
+
+=item C<result_source_attributes>
+
+=item C<root_update_attrs>
+
+=item C<root_update_cmd>
+
+=item C<source_name>
 
 =item C<suid>
 
 Path to the C<suid> root wrapper program that is called to enable update
 access to the real mail alias file
+
+=item C<system_aliases>
+
+The real mail alias file. Defaults to F</etc/mail/aliases>
+
+=back
+
+Defines the following methods modifiers
+
+=over 3
+
+=item C<BUILDARGS>
+
+=item C<resultset>
 
 =back
 
@@ -336,7 +358,7 @@ None
 
 =item L<IPC::Cmd>
 
-=item L<Moose>
+=item L<Moo>
 
 =back
 

@@ -2,7 +2,7 @@ Name
     File::MailAlias - Domain model for the system mail aliases file
 
 Version
-    0.16.$Revision: 4 $
+    0.16.$Rev: 3 $
 
 Synopsis
        use File::MailAlias;
@@ -16,13 +16,12 @@ Description
 Configuration and Environment
     Defines these attributes:
 
-    "system_aliases"
-       The real mail alias file. Defaults to /etc/mail/aliases
-
     "commit"
        Boolean indicating whether source code control tracking is being
        used. Defaults to "false"
 
+    "commit_cmd"
+    "newaliases"
     "path"
        Path to the copy of the "aliases" file that this module works on.
        Defaults to "aliases" in the "ctrldir"
@@ -33,12 +32,24 @@ Configuration and Environment
        control repository
 
     "new_aliases"
-       Path to the "newaliases" program that is used to update the MTA when
-       changes are made
+       Path to the "newaliases" program that is used to update the mail
+       transfer agent when changes are made
 
+    "result_source_attributes"
+    "root_update_attrs"
+    "root_update_cmd"
+    "source_name"
     "suid"
        Path to the "suid" root wrapper program that is called to enable
        update access to the real mail alias file
+
+    "system_aliases"
+       The real mail alias file. Defaults to /etc/mail/aliases
+
+    Defines the following methods modifiers
+
+    "BUILDARGS"
+    "resultset"
 
 Subroutines/Methods
   aliases_map
@@ -113,7 +124,7 @@ Diagnostics
 Dependencies
     File::DataClass
     IPC::Cmd
-    Moose
+    Moo
 
 Incompatibilities
     There are no known incompatibilities in this module

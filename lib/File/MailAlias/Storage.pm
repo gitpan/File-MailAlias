@@ -2,16 +2,16 @@
 
 package File::MailAlias::Storage;
 
-use strict;
-use namespace::autoclean;
-use version; our $VERSION = qv( sprintf '0.16.%d', q$Rev: 2 $ =~ /\d+/gmx );
+use namespace::sweep;
+use version; our $VERSION = qv( sprintf '0.17.%d', q$Rev: 1 $ =~ /\d+/gmx );
 
 use Date::Format;
 use File::DataClass::Constants;
-use Moose;
+use Moo;
+use MooX::Augment -class;
 use Text::Wrap;
 
-extends qw(File::DataClass::Storage);
+extends q(File::DataClass::Storage);
 
 augment '_read_file' => sub {
    my ($self, $rdr) = @_;
@@ -30,7 +30,6 @@ augment '_write_file' => sub {
 };
 
 # Private methods
-
 sub _read_filter {
    my ($self, $buf) = @_; $buf ||= [];
 
@@ -105,7 +104,6 @@ sub _write_filter {
 }
 
 # Private subroutines
-
 sub __original_order {
    my ($hash, $lhs, $rhs) = @_;
 
@@ -119,10 +117,6 @@ sub __stamp {
    return Date::Format::Generic->time2str( '%Y-%m-%d %H:%M:%S', time );
 }
 
-__PACKAGE__->meta->make_immutable;
-
-no Moose;
-
 1;
 
 __END__
@@ -135,7 +129,7 @@ File::MailAlias::Storage - Storage class file the mail alias file
 
 =head1 Version
 
-0.16.$Revision: 2 $
+0.16.$Rev: 1 $
 
 =head1 Synopsis
 
