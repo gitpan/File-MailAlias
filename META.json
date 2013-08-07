@@ -53,7 +53,7 @@
    "provides" : {
       "File::MailAlias" : {
          "file" : "lib/File/MailAlias.pm",
-         "version" : "v0.18.1"
+         "version" : "v0.18.2"
       },
       "File::MailAlias::Storage" : {
          "file" : "lib/File/MailAlias/Storage.pm",
@@ -70,5 +70,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "v0.18.1"
+   "version" : "v0.18.2"
 }
