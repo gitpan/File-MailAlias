@@ -1,5 +1,8 @@
 Revision history for File::MailAlias
 
+0.18.1    2013-08-07 11:06:41
+          - Raised minimum Perl version to v5.10.1
+
 0.17.6    2013-08-03 11:14:48
           - Reverted min Perl ver testing in toolchain
           - New method for CPANTesting min Perl ver

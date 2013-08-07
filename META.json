@@ -46,18 +46,18 @@
             "Moo" : "1.002",
             "Text::Wrap" : "2005.082401",
             "namespace::sweep" : "0.006",
-            "perl" : "5.01"
+            "perl" : "5.010001"
          }
       }
    },
    "provides" : {
       "File::MailAlias" : {
          "file" : "lib/File/MailAlias.pm",
-         "version" : "v0.17.6"
+         "version" : "v0.18.1"
       },
       "File::MailAlias::Storage" : {
          "file" : "lib/File/MailAlias/Storage.pm",
-         "version" : "v0.17.1"
+         "version" : "v0.18.1"
       }
    },
    "release_status" : "stable",
@@ -70,5 +70,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "v0.17.6"
+   "version" : "v0.18.1"
 }
