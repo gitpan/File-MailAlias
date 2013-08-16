@@ -1,10 +1,10 @@
 {
    "abstract" : "Domain model for the system mail aliases file",
    "author" : [
-      "Peter Flanigan, C<< <pjfl@cpan.org> >>"
+      "Peter Flanigan <pjfl@cpan.org>"
    ],
-   "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4004, CPAN::Meta::Converter version 2.120921",
+   "dynamic_config" : "1",
+   "generated_by" : "Dist::Zilla version 4.300033, CPAN::Meta::Converter version 2.120921",
    "license" : [
       "perl_5"
    ],
@@ -36,9 +36,6 @@
          }
       },
       "runtime" : {
-         "recommends" : {
-            "App::cpanminus" : "1.6005"
-         },
          "requires" : {
             "Class::Method::ModifiersX::Augment" : "0.001",
             "Date::Format" : "2.22",
@@ -53,22 +50,24 @@
    "provides" : {
       "File::MailAlias" : {
          "file" : "lib/File/MailAlias.pm",
-         "version" : "v0.18.2"
+         "version" : "v0.19.1"
       },
       "File::MailAlias::Storage" : {
          "file" : "lib/File/MailAlias/Storage.pm",
-         "version" : "v0.18.1"
+         "version" : "v0.19.1"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
+         "mailto" : "bug-File-MailAlias@rt.cpan.org",
          "web" : "http://rt.cpan.org/NoAuth/Bugs.html?Dist=File-MailAlias"
       },
-      "homepage" : "http://www.roxsoft.co.uk",
+      "homepage" : "https://metacpan.org/author/PJFL",
       "license" : [
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "v0.18.2"
+   "version" : "0.19.1"
 }
+

@@ -4,7 +4,7 @@ package File::MailAlias;
 
 use 5.010001;
 use namespace::sweep;
-use version; our $VERSION = qv( sprintf '0.18.%d', q$Rev: 2 $ =~ /\d+/gmx );
+use version; our $VERSION = qv( sprintf '0.19.%d', q$Rev: 1 $ =~ /\d+/gmx );
 
 use English                    qw( -no_match_vars );
 use File::DataClass::Constants;
@@ -187,7 +187,7 @@ File::MailAlias - Domain model for the system mail aliases file
 
 =head1 Version
 
-0.16.$Rev: 2 $
+0.16.$Rev: 1 $
 
 =head1 Synopsis
 
